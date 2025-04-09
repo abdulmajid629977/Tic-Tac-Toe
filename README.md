@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 # Tic-Tac-Toe
-=======
-# Tic Tac Toe Shitshow v1
 
 A chaotic multiplayer Tic Tac Toe game with user accounts, real-time gameplay, and a savage AI opponent.
 
@@ -105,12 +102,66 @@ Then visit http://localhost:5000 in your browser.
 
 ## Deployment
 
-For production deployment, it's recommended to:
+### Render.com (Free)
 
-1. Use Gunicorn as a WSGI server
-2. Set up Nginx as a reverse proxy
-3. Configure a proper database (e.g., PostgreSQL)
-4. Set up proper environment variables
+1. Create an account on [Render.com](https://render.com/)
+2. Connect your GitHub repository
+3. Click "New Web Service"
+4. Select your repository
+5. Render will automatically detect the Python app
+6. Use these settings:
+   - Build Command: `pip install -r requirements.txt`
+   - Start Command: `gunicorn --worker-class eventlet -w 1 app:app`
+   - Select the free plan
+7. Click "Create Web Service"
+
+### Heroku (Free Tier)
+
+1. Create an account on [Heroku](https://www.heroku.com/)
+2. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+3. Login to Heroku CLI:
+   ```bash
+   heroku login
+   ```
+4. Initialize a Git repository (if not already done):
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit"
+   ```
+5. Create a Heroku app:
+   ```bash
+   heroku create your-app-name
+   ```
+6. Push to Heroku:
+   ```bash
+   git push heroku main
+   ```
+7. Open your deployed app:
+   ```bash
+   heroku open
+   ```
+
+### PythonAnywhere (Free)
+
+1. Create an account on [PythonAnywhere](https://www.pythonanywhere.com/)
+2. Go to the Dashboard and open a Bash console
+3. Clone your repository:
+   ```bash
+   git clone https://github.com/yourusername/your-repo.git
+   ```
+4. Set up a virtual environment:
+   ```bash
+   cd your-repo
+   python -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt
+   ```
+5. Go to the Web tab and add a new web app
+6. Choose Manual Configuration and Python 3.9
+7. Set the path to your Flask app
+8. Modify the WSGI file to point to your app
+9. Add your domain name in the "Web" tab
 
 ## License
 
@@ -118,5 +169,4 @@ MIT License - Feel free to use, modify, and distribute as you like.
 
 ## Acknowledgements
 
-Built with ❤️ and 🤬 for chaotic gaming moments. 
->>>>>>> ae969c6 (Initial commit: Tic Tac Toe Shitshow v1 game with Flask backend and React frontend)
+Built with ❤️ and 🤬 for chaotic gaming moments.
