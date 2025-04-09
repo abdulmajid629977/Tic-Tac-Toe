@@ -1,0 +1,334 @@
+:root {
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --accent-color-green: #00ff00;
+  --accent-color-purple: #9900ff;
+  --grid-color: #333333;
+  --x-color: var(--accent-color-green);
+  --o-color: var(--accent-color-purple);
+  --error-color: #ff0000;
+  --button-bg: #111111;
+  --button-hover: #222222;
+  --input-bg: #111111;
+  --border-radius: 8px;
+  --box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+  --box-shadow-purple: 0 0 10px rgba(153, 0, 255, 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  background-color: rgba(10, 10, 10, 0.8);
+  box-shadow: var(--box-shadow);
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent-color-green);
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+  animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(0, 255, 0, 1);
+  }
+}
+
+/* Form Styles */
+.form-control {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.form-control label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--accent-color-green);
+}
+
+.form-control input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid var(--accent-color-green);
+  border-radius: var(--border-radius);
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  font-family: 'Orbitron', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.form-control input:focus {
+  outline: none;
+  box-shadow: var(--box-shadow);
+  border-color: var(--accent-color-purple);
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: var(--button-bg);
+  color: var(--accent-color-green);
+  border: 2px solid var(--accent-color-green);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 10px 5px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.button:hover {
+  background-color: var(--button-hover);
+  box-shadow: var(--box-shadow);
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button.purple {
+  color: var(--accent-color-purple);
+  border-color: var(--accent-color-purple);
+}
+
+.button.purple:hover {
+  box-shadow: var(--box-shadow-purple);
+}
+
+/* Button click ripple effect */
+.button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.button:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(100, 100);
+    opacity: 0;
+  }
+}
+
+/* Game Board Styles */
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 20px 0;
+  max-width: 400px;
+  width: 100%;
+}
+
+.cell {
+  aspect-ratio: 1;
+  background-color: var(--button-bg);
+  border: 2px solid var(--grid-color);
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.cell:hover {
+  background-color: var(--button-hover);
+  box-shadow: var(--box-shadow);
+}
+
+.cell.x {
+  color: var(--x-color);
+  text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+}
+
+.cell.o {
+  color: var(--o-color);
+  text-shadow: 0 0 10px rgba(153, 0, 255, 0.7);
+}
+
+/* Game status message */
+.game-status {
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: var(--border-radius);
+  background-color: var(--button-bg);
+  border: 2px solid var(--accent-color-green);
+  text-align: center;
+  font-size: 1.2rem;
+  max-width: 400px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.game-status.shake {
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+/* Game over banner */
+.game-over-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: var(--accent-color-green);
+  text-align: center;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  z-index: 1000;
+  animation: slideDown 0.5s ease-out forwards;
+  border-bottom: 2px solid var(--accent-color-green);
+  box-shadow: var(--box-shadow);
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Room code display */
+.room-code {
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: var(--border-radius);
+  background-color: var(--button-bg);
+  border: 2px solid var(--accent-color-purple);
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--accent-color-purple);
+  letter-spacing: 5px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: var(--box-shadow-purple);
+}
+
+/* Error message */
+.error-message {
+  margin: 10px 0;
+  padding: 10px;
+  color: var(--error-color);
+  background-color: rgba(255, 0, 0, 0.1);
+  border-radius: var(--border-radius);
+  text-align: center;
+  border: 1px solid var(--error-color);
+}
+
+/* Home page menu */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px 0;
+  width: 100%;
+  max-width: 400px;
+}
+
+.menu .button {
+  width: 100%;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 600px) {
+  .title {
+    font-size: 1.8rem;
+  }
+  
+  .game-board {
+    max-width: 300px;
+  }
+  
+  .cell {
+    font-size: 2rem;
+  }
+  
+  .button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  
+  .game-status,
+  .room-code {
+    font-size: 1rem;
+    max-width: 300px;
+  }
+} 
