@@ -1,1 +1,1 @@
-web: gunicorn --worker-class eventlet -w 1 app:app 
+web: gunicorn --worker-class eventlet -w 1 --threads 4 --timeout 120 --preload --max-requests 1000 --max-requests-jitter 50 app:app 

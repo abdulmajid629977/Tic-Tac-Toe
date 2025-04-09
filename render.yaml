@@ -3,7 +3,14 @@ services:
     name: tictactoe
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn --worker-class eventlet -w 1 app:app
+    startCommand: gunicorn --worker-class eventlet -w 1 --threads 4 --timeout 120 --preload --max-requests 1000 --max-requests-jitter 50 app:app
     envVars:
       - key: PYTHON_VERSION
-        value: 3.9.0 
+        value: 3.9.0
+      - key: SECRET_KEY
+        generateValue: true
+    healthCheckPath: /
+    disk:
+      name: tictactoe-data
+      mountPath: /data
+      sizeGB: 1 
