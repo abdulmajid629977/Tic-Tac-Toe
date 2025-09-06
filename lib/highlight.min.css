@@ -1,0 +1,13 @@
+/* Highlight.js default dark theme (subset) */
+pre code.hljs{display:block;overflow-x:auto;padding:1em}
+code.hljs{padding:3px 5px}
+.hljs{background:#0b0f17;color:#e6edf3}
+.hljs-comment,.hljs-quote{color:#8b95a7}
+.hljs-keyword,.hljs-selector-tag,.hljs-subst{color:#7c93ff}
+.hljs-literal,.hljs-number,.hljs-tag .hljs-attr{color:#00c2ff}
+.hljs-string,.hljs-doctag{color:#10b981}
+.hljs-title,.hljs-section{color:#ffd166}
+.hljs-built_in,.hljs-type{color:#f472b6}
+.hljs-attribute,.hljs-name,.hljs-variable,.hljs-template-variable{color:#facc15}
+.hljs-bullet,.hljs-code,.hljs-addition{color:#34d399}
+.hljs-deletion{color:#ef4444}

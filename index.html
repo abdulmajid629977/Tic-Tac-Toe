@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Groq Chat – openai/gpt-oss-120b</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script defer src="/lib/marked.min.js"></script>
+    <script defer src="/lib/highlight.min.js"></script>
+    <script defer src="/app.js"></script>
+    <link rel="stylesheet" href="/lib/highlight.min.css" />
+</head>
+<body>
+    <header class="app-header">
+        <div class="container">
+            <h1>Groq Chat</h1>
+            <div class="model">Model: <code>openai/gpt-oss-120b</code></div>
+            <button id="set-api-key" class="button">Set API Key</button>
+        </div>
+    </header>
+
+    <main class="app-main">
+        <div id="messages" class="messages"></div>
+    </main>
+
+    <footer class="app-footer">
+        <form id="chat-form" class="chat-form">
+            <input id="user-input" class="input" type="text" placeholder="Type a message..." autocomplete="off" />
+            <button class="send" type="submit">Send</button>
+        </form>
+    </footer>
+
+    <dialog id="api-key-dialog" class="api-key-dialog">
+        <form method="dialog" id="api-key-form">
+            <h3>Enter your Groq API key</h3>
+            <p>This is required to talk to <code>openai/gpt-oss-120b</code>.</p>
+            <input id="api-key-input" type="password" placeholder="groq_api_key_..." class="input" />
+            <div class="dialog-actions">
+                <button id="api-key-save" class="button" value="save">Save</button>
+                <button id="api-key-cancel" class="button secondary" value="cancel">Cancel</button>
+            </div>
+        </form>
+    </dialog>
+</body>
+</html>
+
